@@ -4,14 +4,85 @@
     android:layout_height="match_parent"
     android:background="@drawable/portraitmoodlebackground">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Moodle Login"
+        android:id="@+id/OSL_title_textview"
+        android:textSize="35dp"
+        android:background="@drawable/buttongradient"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="53dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ffffff"
+        android:id="@+id/OSL_entryfields_linear_layout"
+        android:layout_marginTop="66dp"
+        android:layout_below="@+id/OSL_title_textview"
+        android:layout_alignRight="@+id/OSL_title_textview"
+        android:layout_alignEnd="@+id/OSL_title_textview">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/OSL_email_edittext"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/OSL_password_edittext"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
     <Button
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:text="Login"
-        android:id="@+id/button"
+        android:id="@+id/OSL_login_button"
+        android:layout_marginBottom="53dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:textSize="25dp"
+        android:textSize="35dp"
         android:background="@drawable/loginbuttongradient" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#ffffff"
+        android:layout_alignTop="@+id/OSL_entryfields_linear_layout"
+        android:layout_alignLeft="@+id/OSL_title_textview"
+        android:layout_alignStart="@+id/OSL_title_textview"
+        android:layout_toLeftOf="@+id/OSL_entryfields_linear_layout"
+        android:layout_toStartOf="@+id/OSL_entryfields_linear_layout"
+        android:id="@+id/OSL_labelfields_linear_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Email"
+            android:id="@+id/textView2"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Password"
+            android:id="@+id/textView3"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="20dp" />
+    </LinearLayout>
 </RelativeLayout>
