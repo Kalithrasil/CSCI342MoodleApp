@@ -8,6 +8,82 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.csci342.justin.moodleapplication.Dashboard"
-    android:background="@drawable/portraitmoodlebackground">
+    android:id="@+id/D_MainLayout_relativelayout">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:id="@+id/D_tabslist_linearlayoutvertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Edit Personal Details"
+            android:id="@+id/D_EdPerDet_button"
+            android:layout_weight="0.5"
+            android:background="#c8c8c8"
+            android:textSize="20dp"
+            android:onClick="toEditDetails"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="University Details"
+            android:id="@+id/D_UniDet_button"
+            android:layout_weight="0.5"
+            android:background="#adadad"
+            android:textSize="20dp"
+            android:onClick="toViewUniInfo"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/D_tabslist_linearlayoutvertical"
+        android:id="@+id/D_tabview_framelayout">
+
+    </FrameLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Send Announcement"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/D_titlebar_linearlayout" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Dashboard"
+            android:id="@+id/D_title_textview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="View Subjects"
+            android:id="@+id/D_VieSub_button"
+            android:textSize="20dp"
+            android:layout_alignBottom="@+id/D_title_textview"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="0.5" />
+    </LinearLayout>
 </RelativeLayout>
