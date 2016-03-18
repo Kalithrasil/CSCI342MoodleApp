@@ -7,13 +7,17 @@ import android.widget.TextView;
 
 public class SubjectView extends Activity {
 
+    Intent previous;
+    String authority;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_view);
 
-        Intent intent = getIntent();
-        String subject = intent.getStringExtra("Subject Name");
+        previous = getIntent();
+        authority = previous.getStringExtra("Authority");
+        String subject = previous.getStringExtra("Subject Name");
 
         TextView temp = (TextView) findViewById(R.id.SV_subjectname_textview);
         temp.setText(subject);

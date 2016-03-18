@@ -13,10 +13,16 @@ import java.util.ArrayList;
 
 public class ListOfSubjects extends Activity {
 
+    Intent previous;
+    String authority;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_subjects);
+
+        previous = getIntent();
+        authority = previous.getStringExtra("Authority");
 
         Spinner spinner = (Spinner) findViewById(R.id.LOS_yearselection_spinner);
 
