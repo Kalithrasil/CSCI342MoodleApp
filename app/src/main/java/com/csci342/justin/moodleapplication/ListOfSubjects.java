@@ -28,6 +28,8 @@ public class ListOfSubjects extends Activity {
 
         spinner.setAdapter(spinner_adapter);
 
+        //test comment line for commit's sake
+
         final ListView listview = (ListView) findViewById(R.id.LOS_subjectlist_listview);
 
         //receive info from online database to fill the listview
