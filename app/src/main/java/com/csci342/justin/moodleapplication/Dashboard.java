@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import layout.EditPersonalDetails;
-import layout.ViewUniversityInfo;
+import layout.SendAnnouncement;
 
 public class Dashboard extends Activity{
 
@@ -30,7 +31,7 @@ public class Dashboard extends Activity{
         ft.replace(R.id.D_tabview_framelayout, frag).commit();
     }
 
-    public void toEditDetails(View v)
+    public void switchToEditDetails(View v)
     {
             frag = new EditPersonalDetails();
             FragmentTransaction ft = fm.beginTransaction();
@@ -38,12 +39,24 @@ public class Dashboard extends Activity{
             ft.replace(R.id.D_tabview_framelayout, frag).commit();
     }
 
-    public void toViewUniInfo(View v)
+    public void switchToSendAnnouncement(View v)
     {
-            frag = new ViewUniversityInfo();
+            frag = new SendAnnouncement();
             FragmentTransaction ft = fm.beginTransaction();
             tabs.removeAllViews();
             ft.replace(R.id.D_tabview_framelayout, frag).commit();
+    }
+
+    public void toViewUniversityDetails(View v)
+    {
+            Intent i = new Intent(this, ViewUniversityDetails.class);
+            startActivity(i);
+    }
+
+    public void toListOfSubjects(View v)
+    {
+            Intent i = new Intent(this, ListOfSubjects.class);
+            startActivity(i);
     }
 
 }

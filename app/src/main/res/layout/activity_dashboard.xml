@@ -27,18 +27,18 @@
             android:layout_weight="0.5"
             android:background="#c8c8c8"
             android:textSize="20dp"
-            android:onClick="toEditDetails"
+            android:onClick="switchToEditDetails"
             />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="University Details"
-            android:id="@+id/D_UniDet_button"
+            android:text="Send Announcement"
+            android:id="@+id/D_SenAnn_button"
             android:layout_weight="0.5"
             android:background="#adadad"
             android:textSize="20dp"
-            android:onClick="toViewUniInfo"
+            android:onClick="switchToSendAnnouncement"
             />
     </LinearLayout>
 
@@ -53,10 +53,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Send Announcement"
-        android:id="@+id/button"
+        android:text="View University Information"
+        android:id="@+id/D_VieUni_button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="toViewUniversityDetails"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -84,6 +86,8 @@
             android:layout_alignBottom="@+id/D_title_textview"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_weight="0.5" />
+            android:layout_weight="0.5"
+            android:onClick="toListOfSubjects"
+            />
     </LinearLayout>
 </RelativeLayout>

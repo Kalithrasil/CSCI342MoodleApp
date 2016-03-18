@@ -18,12 +18,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ViewUniversityInfo.OnFragmentInteractionListener} interface
+ * {@link SendAnnouncement.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ViewUniversityInfo#newInstance} factory method to
+ * Use the {@link SendAnnouncement#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewUniversityInfo extends Fragment {
+public class SendAnnouncement extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,7 +37,7 @@ public class ViewUniversityInfo extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ViewUniversityInfo() {
+    public SendAnnouncement() {
         // Required empty public constructor
     }
 
@@ -47,11 +47,11 @@ public class ViewUniversityInfo extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ViewUniversityInfo.
+     * @return A new instance of fragment SendAnnouncement.
      */
     // TODO: Rename and change types and number of parameters
-    public static ViewUniversityInfo newInstance(String param1, String param2) {
-        ViewUniversityInfo fragment = new ViewUniversityInfo();
+    public static SendAnnouncement newInstance(String param1, String param2) {
+        SendAnnouncement fragment = new SendAnnouncement();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,7 +72,7 @@ public class ViewUniversityInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_view_university_info, container, false);
+        rootView = inflater.inflate(R.layout.fragment_send_announcement, container, false);
 
         final ListView listview2 = (ListView) rootView.findViewById(R.id.VUI_list_listview);
 

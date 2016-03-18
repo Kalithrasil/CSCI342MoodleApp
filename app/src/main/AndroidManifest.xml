@@ -15,7 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard"></activity>
+        <activity android:name=".Dashboard" />
+        <activity android:name=".ViewUniversityDetails" />
+        <activity android:name=".ListOfSubjects" />
+        <activity android:name=".SubjectView"></activity>
     </application>
 
 </manifest>
