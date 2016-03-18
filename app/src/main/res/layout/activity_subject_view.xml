@@ -13,7 +13,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:id="@+id/SV_titlebar_linearlayout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,4 +26,49 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/SV_tabslist_linearlayout"
+        android:layout_below="@id/SV_titlebar_linearlayout"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="View Resources"
+            android:id="@+id/SV_viewres_button"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:background="#c8c8c8" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="View Grades"
+            android:id="@+id/SV_viewgrad_button"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:background="#b4b4b4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Upload Assignment"
+            android:id="@+id/SV_uploadassi_button"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:background="#a0a0a0" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/SV_tabview_framelayout"
+        android:layout_below="@id/SV_tabslist_linearlayout"
+        >
+
+    </FrameLayout>
 </RelativeLayout>
