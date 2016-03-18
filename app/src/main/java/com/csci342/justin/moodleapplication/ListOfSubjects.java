@@ -59,6 +59,7 @@ public class ListOfSubjects extends Activity {
 
                 Intent i = new Intent(ListOfSubjects.this, SubjectView.class);
                 i.putExtra("Subject Name", x);
+                i.putExtra("Authority", authority);
                 startActivity(i);
             }
 

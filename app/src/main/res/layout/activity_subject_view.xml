@@ -42,7 +42,9 @@
             android:id="@+id/SV_viewres_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#c8c8c8" />
+            android:background="#c8c8c8"
+            android:onClick="switchToViewResources"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -51,7 +53,9 @@
             android:id="@+id/SV_viewgrad_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#b4b4b4" />
+            android:background="#b4b4b4"
+            android:onClick="switchToViewGrades"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -60,7 +64,9 @@
             android:id="@+id/SV_uploadassi_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#a0a0a0" />
+            android:background="#a0a0a0"
+            android:onClick="switchToUploadAssignment"
+            />
     </LinearLayout>
 
     <FrameLayout
