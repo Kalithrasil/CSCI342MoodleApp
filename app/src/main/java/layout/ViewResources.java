@@ -29,6 +29,8 @@ public class ViewResources extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    View rootView;
+
     private OnFragmentInteractionListener mListener;
 
     public ViewResources() {
