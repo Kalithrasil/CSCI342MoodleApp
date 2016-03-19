@@ -7,8 +7,12 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.csci342.justin.moodleapplication.R;
+
+import java.util.ArrayList;
 
 
 /**
@@ -67,8 +71,24 @@ public class ViewResources extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        rootView = inflater.inflate(R.layout.fragment_view_resources, container, false);
+
+        final ListView listview = (ListView) rootView.findViewById(R.id.VR_infolist_listview);
+
+        String[] values = new String[] {"SUBJECT OUTLINE", " ", " ", " ", " "};
+
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
+        }
+
+        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
+        listview.setAdapter(adapter);
+
+        return rootView;
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_resources, container, false);
+        //return inflater.inflate(R.layout.fragment_view_resources, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
