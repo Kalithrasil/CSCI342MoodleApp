@@ -9,7 +9,6 @@
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Moodle Login"
         android:id="@+id/OSL_title_textview"
         android:textSize="35dp"
         android:gravity="center_vertical|center_horizontal"
@@ -58,7 +57,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="35dp"
         android:onClick="login"
-        android:background="#1190ee"
+        android:background="#71a8d0"
         />
 
     <LinearLayout
@@ -98,5 +97,17 @@
         android:id="@+id/OSL_tempspin_spinner"
         android:layout_below="@+id/OSL_entryfields_linearlayout"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/uowdmoodletitle01"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layoyt_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
