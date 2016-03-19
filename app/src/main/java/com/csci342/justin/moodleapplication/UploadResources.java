@@ -7,6 +7,10 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -22,6 +26,8 @@ public class UploadResources extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    View rootView;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -62,9 +68,25 @@ public class UploadResources extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
+        rootView = inflater.inflate(R.layout.fragment_upload_resources, container, false);
+
+        final ListView listview = (ListView) rootView.findViewById(R.id.UR_list_listview);
+
+        String[] values = new String[] {"SUBJECT OUTLINE", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
+
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
+        }
+
+        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
+        listview.setAdapter(adapter);
+
+        return rootView;
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upload_resources, container, false);
+        //return inflater.inflate(R.layout.fragment_upload_resources, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
