@@ -17,5 +17,6 @@
         android:layout_height="516dp"
         android:id="@+id/SA_list_listview"
         android:background="#adadad"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|top"
+        />
 </FrameLayout>
