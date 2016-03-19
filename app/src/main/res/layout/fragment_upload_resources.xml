@@ -7,9 +7,15 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ListView
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/UR_list_listview"
-        android:background="#b4b4b4" />
+        android:id="@+id/RU_list_scrollview" >
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/UR_list_listview"
+            android:background="#b4b4b4" />
+    </ScrollView>
 </RelativeLayout>

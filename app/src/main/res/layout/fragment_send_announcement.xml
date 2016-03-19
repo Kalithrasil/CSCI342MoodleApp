@@ -10,13 +10,20 @@
         android:layout_height="wrap_content"
         android:text="New Annoucement"
         android:id="@+id/SA_SenAnn_button"
-        android:layout_gravity="center_horizontal|bottom" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:onClick="AddNewItem"/>
 
-    <ListView
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="516dp"
-        android:id="@+id/SA_list_listview"
-        android:background="#adadad"
-        android:layout_gravity="center_horizontal|top"
-        />
+        android:layout_height="527dp"
+        android:id="@+id/SA_scollview" >
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="516dp"
+            android:id="@+id/SA_list_listview"
+            android:background="#adadad"
+            android:layout_gravity="center_horizontal|top"
+            />
+    </ScrollView>
 </FrameLayout>

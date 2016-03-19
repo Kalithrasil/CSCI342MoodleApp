@@ -74,7 +74,7 @@ public class UploadResources extends Fragment {
 
         final ListView listview = (ListView) rootView.findViewById(R.id.UR_list_listview);
 
-        String[] values = new String[] {"SUBJECT OUTLINE", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
+        String[] values = new String[] {"SUBJECT OUTLINE", "Lecture 01", "Lecture 02", "Lecture 03", "Tutorial 01", "Tutorial 02", "Tutorial 03", "Assignment 1"};
 
         final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
