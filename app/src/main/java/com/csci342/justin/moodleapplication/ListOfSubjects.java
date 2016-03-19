@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -41,15 +44,17 @@ public class ListOfSubjects extends Activity {
         //receive info from online database to fill the listview
             //and set the year (default)
         String[] values = new String[] {"CSCI015", "CSCI103", "CSCI131", "CSCI114", "CSCI124", "CSCI203", "CSCI235"};
-        final ArrayList<String> list = new ArrayList<String>();
-        for(int i= 0; i < values.length; ++i)
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.LOS_linearlayout);
+
+        for (int i = 0; i < values.length; ++i)
         {
-            list.add(values[i]);
+            Button butt = new Button(this);
+            butt.setText(values[i]);
+            butt.setOnClickListener(handleOnClick(butt));
+            linearLayout.addView(butt);
         }
-
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
-        listview.setAdapter(adapter);
-
+        /*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -63,7 +68,34 @@ public class ListOfSubjects extends Activity {
                 startActivity(i);
             }
 
-        });
+        });*/
+    }
+
+    void SubjectButtonOnClick(View v)
+    {
+        Button butt = (Button) v;
+        String x = (String) butt.getText();
+
+        Intent i = new Intent(ListOfSubjects.this, SubjectView.class);
+        i.putExtra("Subject Name", x);
+        i.putExtra("Authority", authority);
+        startActivity(i);
+    }
+
+    View.OnClickListener handleOnClick(final Button button) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Button butt = (Button) v;
+                String x = (String) butt.getText();
+
+                Intent i = new Intent(ListOfSubjects.this, SubjectView.class);
+                i.putExtra("Subject Name", x);
+                i.putExtra("Authority", authority);
+                startActivity(i);
+
+            }
+        };
     }
 
 }

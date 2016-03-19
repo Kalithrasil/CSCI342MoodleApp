@@ -8,7 +8,7 @@
     <Button
         android:layout_width="386dp"
         android:layout_height="wrap_content"
-        android:text="New Annoucement"
+        android:text="New Announcement"
         android:id="@+id/SA_SenAnn_button"
         android:layout_gravity="center_horizontal|bottom"
         android:onClick="AddNewItem"

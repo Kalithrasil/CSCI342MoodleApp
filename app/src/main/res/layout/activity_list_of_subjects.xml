@@ -35,11 +35,17 @@
             android:layout_weight="0.5" />
     </LinearLayout>
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/LOS_subjectlist_listview"
-        android:layout_below="@id/LOS_titlelayout_linearlayout"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LOS_scrollview"
+        android:layout_below="@+id/LOS_titlelayout_linearlayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/LOS_linearlayout"></LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
