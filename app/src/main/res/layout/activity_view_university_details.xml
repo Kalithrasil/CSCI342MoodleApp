@@ -19,12 +19,20 @@
         android:id="@+id/VUD_titlebar_linearlayout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="University Details"
             android:id="@+id/VUD_title_textview"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Add Calendar Event"
+            android:id="@+id/VUD_AddEve_button"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout

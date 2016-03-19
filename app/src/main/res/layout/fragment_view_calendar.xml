@@ -9,21 +9,12 @@
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/VC_calendar_calendarview"
         android:layout_alignParentTop="false"
-        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="30dp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:text="Add New Calendar Event"
-        android:id="@+id/VC_newevent_button"
-        android:layout_below="@+id/VC_calendar_calendarview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
 </RelativeLayout>
