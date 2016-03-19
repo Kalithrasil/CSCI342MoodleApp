@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.csci342.justin.moodleapplication.R;
@@ -96,6 +98,14 @@ public class SendAnnouncement extends Fragment {
             txt1.setText(values[i]);
             linearLayout.addView(txt1);
         }
+
+        FrameLayout f2 = (FrameLayout) getActivity().findViewById(R.id.D_tabview_framelayout);
+
+        RelativeLayout.LayoutParams x = new RelativeLayout.LayoutParams(300, 300);
+        x.addRule(RelativeLayout.BELOW, R.id.D_tabslist_linearlayoutvertical);
+
+        f2.setLayoutParams(x);
+
 
         return rootView;
     }
