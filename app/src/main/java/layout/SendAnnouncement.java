@@ -101,8 +101,10 @@ public class SendAnnouncement extends Fragment {
 
         FrameLayout f2 = (FrameLayout) getActivity().findViewById(R.id.D_tabview_framelayout);
 
-        RelativeLayout.LayoutParams x = new RelativeLayout.LayoutParams(300, 300);
+        RelativeLayout.LayoutParams x = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300);
         x.addRule(RelativeLayout.BELOW, R.id.D_tabslist_linearlayoutvertical);
+        x.addRule(RelativeLayout.ABOVE, R.id.D_VieUni_button);
+
 
         f2.setLayoutParams(x);
 
