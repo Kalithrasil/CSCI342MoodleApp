@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import layout.EditPersonalDetails;
 import layout.SendAnnouncement;
@@ -82,6 +83,17 @@ public class Dashboard extends Activity{
             Intent i = new Intent(this, ListOfSubjects.class);
             i.putExtra("Authority", authority);
             startActivity(i);
+    }
+
+
+    public void AddNewItem(View v)
+    {
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SA_linear_layout);
+
+        TextView txt1 = new TextView(this);
+        txt1.setText("NEW ANNOUNCEMENT");
+        linearLayout.addView(txt1);
     }
 
 }
