@@ -5,9 +5,17 @@
     tools:context="layout.SendAnnouncement">
 
 
+    <Button
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:text="New Annoucement"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal|bottom" />
+
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="516dp"
         android:id="@+id/VUI_list_listview"
-        android:background="#adadad" />
+        android:background="#adadad"
+        android:layout_gravity="center_horizontal|top" />
 </FrameLayout>
