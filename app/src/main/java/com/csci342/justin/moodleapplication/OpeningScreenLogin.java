@@ -15,6 +15,7 @@ public class OpeningScreenLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_opening_screen_login);
 
         spinner = (Spinner) findViewById(R.id.OSL_tempspin_spinner);

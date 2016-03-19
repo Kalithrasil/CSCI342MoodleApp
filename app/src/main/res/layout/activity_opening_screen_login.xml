@@ -105,7 +105,7 @@
         android:src="@drawable/uowdmoodletitle01"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layoyt_marginTop="20dp"
+        android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
