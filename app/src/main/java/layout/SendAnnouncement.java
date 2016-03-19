@@ -97,7 +97,7 @@ public class SendAnnouncement extends Fragment {
 
         for (int i = 0; i < values.length; ++i)
         {
-            TextView txt1 = new TextView(null);
+            TextView txt1 = new TextView(getActivity());
             txt1.setText(values[i]);
             linearLayout.addView(txt1);
         }
@@ -113,7 +113,7 @@ public class SendAnnouncement extends Fragment {
 
         LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.SA_linear_layout);
 
-            TextView txt1 = new TextView(null);
+            TextView txt1 = new TextView(getActivity());
             txt1.setText("NEW ANNOUNCEMENT");
             linearLayout.addView(txt1);
     }
