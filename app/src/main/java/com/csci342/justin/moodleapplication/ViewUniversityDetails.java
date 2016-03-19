@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import layout.AddCalendarEvent;
 import layout.ContactUs;
 import layout.ViewCalendar;
 import layout.ViewPolicies;
@@ -57,6 +58,10 @@ public class ViewUniversityDetails extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
         ft.replace(R.id.VUD_tabsview_framelayout, frag).commit();
+        if(authority.equals("Teacher")) {
+            Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
+            temp.setVisibility(View.VISIBLE);
+        }
     }
 
     public void switchToViewContactUs(View v)
@@ -65,6 +70,8 @@ public class ViewUniversityDetails extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
         ft.replace(R.id.VUD_tabsview_framelayout, frag).commit();
+        Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
+        temp.setVisibility(View.INVISIBLE);
     }
 
     public void switchToViewPolicies(View v)
@@ -73,5 +80,17 @@ public class ViewUniversityDetails extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
         ft.replace(R.id.VUD_tabsview_framelayout, frag).commit();
+        Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
+        temp.setVisibility(View.INVISIBLE);
+    }
+
+    public void AddCalendarEvent(View v)
+    {
+        frag = new AddCalendarEvent();
+        FragmentTransaction ft = fm.beginTransaction();
+        tabs.removeAllViews();
+        ft.replace(R.id.VUD_tabsview_framelayout, frag).commit();
+        Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
+        temp.setVisibility(View.INVISIBLE);
     }
 }

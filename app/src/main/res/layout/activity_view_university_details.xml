@@ -32,7 +32,9 @@
             android:layout_height="match_parent"
             android:text="Add Calendar Event"
             android:id="@+id/VUD_AddEve_button"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="AddCalendarEvent"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +52,9 @@
             android:text="View Calendar"
             android:id="@+id/VUD_VieCal_button"
             android:layout_weight="1"
-            android:background="#c8c8c8" />
+            android:background="#c8c8c8"
+            android:onClick="switchToViewCalendar"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -58,7 +62,9 @@
             android:text="Contact Us"
             android:id="@+id/VUD_VieConUs_button"
             android:layout_weight="1"
-            android:background="#b4b4b4" />
+            android:background="#b4b4b4"
+            android:onClick="switchToViewContactUs"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -66,7 +72,9 @@
             android:text="View Policies"
             android:id="@+id/VUD_ViePol_button"
             android:layout_weight="1"
-            android:background="#a0a0a0" />
+            android:background="#a0a0a0"
+            android:onClick="switchToViewPolicies"
+            />
     </LinearLayout>
 
     <FrameLayout
