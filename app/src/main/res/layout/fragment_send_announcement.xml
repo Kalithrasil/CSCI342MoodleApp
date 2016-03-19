@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,19 +11,26 @@
         android:text="New Annoucement"
         android:id="@+id/SA_SenAnn_button"
         android:layout_gravity="center_horizontal|bottom"
-        android:onClick="AddNewItem"/>
+        android:onClick="AddNewItem"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="527dp"
-        android:id="@+id/SA_scollview" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SA_scollview"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_above="@+id/SA_SenAnn_button">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="516dp"
-            android:id="@+id/SA_list_listview"
-            android:background="#adadad"
-            android:layout_gravity="center_horizontal|top"
-            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/SA_linear_layout"></LinearLayout>
     </ScrollView>
-</FrameLayout>
+
+</RelativeLayout>

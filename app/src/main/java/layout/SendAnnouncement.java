@@ -2,13 +2,16 @@ package layout;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.csci342.justin.moodleapplication.R;
 
@@ -74,6 +77,7 @@ public class SendAnnouncement extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_send_announcement, container, false);
 
+        /*
         final ListView listview2 = (ListView) rootView.findViewById(R.id.SA_list_listview);
 
         String[] values = new String[] {"Dummy Data 1", "Dummy Data 2", "Dummy Data 3", "Dummy Data 4", "Dummy Data 5"};
@@ -85,15 +89,33 @@ public class SendAnnouncement extends Fragment {
 
         final ArrayAdapter adapter2 = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list2);
         listview2.setAdapter(adapter2);
+        */
+
+        String[] values = new String[] {"Dummy Data 1", "Dummy Data 2", "Dummy Data 3", "Dummy Data 4", "Dummy Data 5"};
+
+        LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.SA_linear_layout);
+
+        for (int i = 0; i < values.length; ++i)
+        {
+            TextView txt1 = new TextView(null);
+            txt1.setText(values[i]);
+            linearLayout.addView(txt1);
+        }
 
         return rootView;
     }
 
     public void AddNewItem(View v)
     {
-        ListView listview2 = (ListView) rootView.findViewById(R.id.SA_list_listview);
-        ArrayAdapter adpter = (ArrayAdapter)listview2.getAdapter();
-        adpter.add("NEW ANNOUNCEMENT");
+        //ListView listview2 = (ListView) rootView.findViewById(R.id.SA_list_listview);
+        //ArrayAdapter adpter = (ArrayAdapter)listview2.getAdapter();
+        //adpter.add("NEW ANNOUNCEMENT");
+
+        LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.SA_linear_layout);
+
+            TextView txt1 = new TextView(null);
+            txt1.setText("NEW ANNOUNCEMENT");
+            linearLayout.addView(txt1);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
