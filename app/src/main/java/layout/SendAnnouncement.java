@@ -105,18 +105,6 @@ public class SendAnnouncement extends Fragment {
         return rootView;
     }
 
-    public void AddNewItem(View v)
-    {
-        //ListView listview2 = (ListView) rootView.findViewById(R.id.SA_list_listview);
-        //ArrayAdapter adpter = (ArrayAdapter)listview2.getAdapter();
-        //adpter.add("NEW ANNOUNCEMENT");
-
-        LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.SA_linear_layout);
-
-            TextView txt1 = new TextView(getActivity());
-            txt1.setText("NEW ANNOUNCEMENT");
-            linearLayout.addView(txt1);
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
