@@ -76,7 +76,7 @@ public class ViewResources extends Fragment {
 
         final ListView listview = (ListView) rootView.findViewById(R.id.VR_infolist_listview);
 
-        String[] values = new String[] {"SUBJECT OUTLINE", " ", " ", " ", " "};
+        String[] values = new String[] {"SUBJECT OUTLINE", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - "};
 
         final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
