@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.csci342.justin.moodleapplication.ListOfSubjects"
-    android:id="@+id/LOS_MainLayout_relativelayout">
+    android:id="@+id/LOS_MainLayout_relativelayout"
+    android:background="#a0d0f3">
 
     <LinearLayout
         android:orientation="horizontal"

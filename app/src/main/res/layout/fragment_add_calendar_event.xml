@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="layout.AddCalendarEvent"
     android:id="@+id/ACE_MainLayout_relativelayout"
-    android:background="#dcdcdc">
+    android:background="#a0d0f3">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.csci342.justin.moodleapplication.Dashboard"
-    android:id="@+id/D_MainLayout_relativelayout">
+    android:id="@+id/D_MainLayout_relativelayout"
+    android:background="#a0d0f3">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -58,6 +59,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="toViewUniversityDetails"
+        android:background="#71a8d0"
         />
 
     <LinearLayout
@@ -88,6 +90,7 @@
             android:layout_alignParentEnd="true"
             android:layout_weight="0.5"
             android:onClick="toListOfSubjects"
+            android:background="#71a8d0"
             />
     </LinearLayout>
 </RelativeLayout>
