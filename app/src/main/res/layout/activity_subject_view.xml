@@ -39,33 +39,33 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="View Resources"
+            android:text="View \nResources"
             android:id="@+id/SV_viewres_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#c8c8c8"
+            android:background="#8db3cf"
             android:onClick="switchToViewResources"
             />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="View Grades"
+            android:text="View \nGrades"
             android:id="@+id/SV_viewgrad_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#b4b4b4"
+            android:background="#69a6d2"
             android:onClick="switchToViewGrades"
             />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Upload Assignment"
+            android:text="Upload \nAssignment"
             android:id="@+id/SV_uploadassi_button"
             android:layout_weight="1"
             android:textSize="14dp"
-            android:background="#a0a0a0"
+            android:background="#5993bd"
             android:onClick="switchToUploadAssignment"
             />
     </LinearLayout>
