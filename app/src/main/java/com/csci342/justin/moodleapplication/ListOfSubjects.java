@@ -4,15 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class ListOfSubjects extends Activity {
 
@@ -39,7 +34,7 @@ public class ListOfSubjects extends Activity {
 
         //test comment line for commit's sake
 
-        final ListView listview = (ListView) findViewById(R.id.LOS_subjectlist_listview);
+        //final ListView listview = (ListView) findViewById(R.id.LOS_subjectlist_listview);
 
         //receive info from online database to fill the listview
             //and set the year (default)
