@@ -53,7 +53,7 @@
             android:text="View Resources"
             android:id="@+id/SVT_VieRes_button"
             android:layout_weight="1"
-            android:background="#c8c8c8"
+            android:background="#8db3cf"
             android:onClick="switchToViewResourcesTeacher"
             />
 
@@ -63,7 +63,7 @@
             android:text="Upload Resources"
             android:id="@+id/SVT_UplRes_button"
             android:layout_weight="1"
-            android:background="#b4b4b4"
+            android:background="#69a6d2"
             android:onClick="switchToUploadResources"
             />
 
@@ -73,7 +73,7 @@
             android:text="View Enrolled Students"
             android:id="@+id/SVT_VieEnrStu_button"
             android:layout_weight="1"
-            android:background="#a0a0a0"
+            android:background="#5993bd"
             android:onClick="switchToViewEnrolledStudents"
             />
 

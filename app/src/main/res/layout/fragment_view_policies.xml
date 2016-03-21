@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="layout.ViewPolicies"
     android:id="@+id/VP_MainLayout_relativelayout"
-    android:background="#a0a0a0">
+    android:background="#5993bd">
 
     <!-- TODO: Update blank fragment layout -->
 

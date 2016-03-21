@@ -26,7 +26,7 @@
             android:text="Edit Personal Details"
             android:id="@+id/D_EdPerDet_button"
             android:layout_weight="0.5"
-            android:background="#c8c8c8"
+            android:background="#8db3cf"
             android:textSize="20dp"
             android:onClick="switchToEditDetails"
             />
@@ -37,7 +37,7 @@
             android:text="Send Announcement"
             android:id="@+id/D_SenAnn_button"
             android:layout_weight="0.5"
-            android:background="#adadad"
+            android:background="#69a6d2"
             android:textSize="20dp"
             android:onClick="switchToSendAnnouncement"
             android:visibility="invisible" />

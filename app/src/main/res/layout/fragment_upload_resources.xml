@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.csci342.justin.moodleapplication.UploadResources"
-    android:background="#b4b4b4">
+    android:background="#5993bd">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,6 +16,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/UR_list_listview"
-            android:background="#b4b4b4" />
+            android:background="#5993bd" />
     </ScrollView>
 </RelativeLayout>

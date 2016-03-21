@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="layout.ContactUs"
     android:id="@+id/CU_MainLayout_relativelayout"
-    android:background="#b4b4b4">
+    android:background="#69a6d2">
 
     <!-- TODO: Update blank fragment layout -->
 
