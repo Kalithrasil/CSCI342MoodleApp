@@ -18,7 +18,7 @@ import layout.ViewResources;
 public class SubjectView extends Activity {
 
     Intent previous;
-    String authority;
+    Connection connect;
 
     FragmentManager fm = getFragmentManager();
     Fragment frag;
@@ -30,12 +30,12 @@ public class SubjectView extends Activity {
 
 
         previous = getIntent();
-        authority = previous.getStringExtra("Authority");
+        connect = (Connection) previous.getSerializableExtra("Connection");
         String subject = previous.getStringExtra("Subject Name");
 
 
 
-        if(authority.equals("Teacher"))
+        if(connect.user.authority.equals("Teacher"))
         {
             setContentView(R.layout.activity_subject_view_teacher);
             TextView temp = (TextView) findViewById(R.id.SVT_subjectname_textview);

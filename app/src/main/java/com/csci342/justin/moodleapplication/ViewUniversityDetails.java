@@ -18,7 +18,7 @@ import layout.ViewPolicies;
 public class ViewUniversityDetails extends Activity {
 
     Intent previous;
-    String authority;
+    Connection connect;
 
     FragmentManager fm = getFragmentManager();
     Fragment frag;
@@ -30,7 +30,7 @@ public class ViewUniversityDetails extends Activity {
         setContentView(R.layout.activity_view_university_details);
 
         previous = getIntent();
-        authority = previous.getStringExtra("Authority");
+        connect = (Connection) previous.getSerializableExtra("Connection");
 
         frag = new ViewCalendar();
         FragmentTransaction ft = fm.beginTransaction();
@@ -41,7 +41,7 @@ public class ViewUniversityDetails extends Activity {
 
         Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
 
-        if(authority.equals("Teacher"))
+        if(connect.user.authority.equals("Teacher"))
         {
             temp.setVisibility(View.VISIBLE);
         }
@@ -58,7 +58,7 @@ public class ViewUniversityDetails extends Activity {
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
         ft.replace(R.id.VUD_tabsview_framelayout, frag).commit();
-        if(authority.equals("Teacher")) {
+        if(connect.user.authority.equals("Teacher")) {
             Button temp = (Button) findViewById(R.id.VUD_AddEve_button);
             temp.setVisibility(View.VISIBLE);
         }

@@ -12,7 +12,7 @@ import android.widget.Spinner;
 public class ListOfSubjects extends Activity {
 
     Intent previous;
-    String authority;
+    Connection connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class ListOfSubjects extends Activity {
         setContentView(R.layout.activity_list_of_subjects);
 
         previous = getIntent();
-        authority = previous.getStringExtra("Authority");
+        connect = (Connection) previous.getSerializableExtra("Connection");
 
         Spinner spinner = (Spinner) findViewById(R.id.LOS_yearselection_spinner);
 
@@ -73,7 +73,7 @@ public class ListOfSubjects extends Activity {
 
         Intent i = new Intent(ListOfSubjects.this, SubjectView.class);
         i.putExtra("Subject Name", x);
-        i.putExtra("Authority", authority);
+        i.putExtra("Connection",connect);
         startActivity(i);
     }
 
@@ -86,7 +86,7 @@ public class ListOfSubjects extends Activity {
 
                 Intent i = new Intent(ListOfSubjects.this, SubjectView.class);
                 i.putExtra("Subject Name", x);
-                i.putExtra("Authority", authority);
+                i.putExtra("Connection",connect);
                 startActivity(i);
 
             }
