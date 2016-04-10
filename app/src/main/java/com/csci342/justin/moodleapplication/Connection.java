@@ -19,6 +19,7 @@ public class Connection extends Thread implements Serializable {
     MyObjectOutputStream output;
     MyObjectInputStream input;
     Info temp;
+    int status = 0;
 
     public void run()
     {
@@ -27,6 +28,7 @@ public class Connection extends Thread implements Serializable {
             with_server = new MySocket(InetAddress.getByName(addr), PORT);
             output = new MyObjectOutputStream(with_server.getOutputStream());
             input = new MyObjectInputStream(with_server.getInputStream());
+            status = 1;
             //connection made and logic waiting
 
             while(true)

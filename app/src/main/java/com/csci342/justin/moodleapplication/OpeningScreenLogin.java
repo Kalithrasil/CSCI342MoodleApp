@@ -9,10 +9,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class OpeningScreenLogin extends AppCompatActivity {
+public class OpeningScreenLogin extends AppCompatActivity{
 
     Spinner spinner;
     Connection connect;
+    EditText email_test;
+    EditText password_test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,38 +51,48 @@ public class OpeningScreenLogin extends AppCompatActivity {
         connect.send_login();
     }
 
-    public void login(View v)
-    {
+    public void login(View v) {
+        Toast.makeText(this, "Attempting to connect", Toast.LENGTH_LONG).show();
+
         startLoginProcess();
 
-        EditText email_test = (EditText) findViewById(R.id.OSL_email_edittext);
-        EditText password_test = (EditText) findViewById(R.id.OSL_password_edittext);
-        String ema = email_test.getText().toString();
-        String passw = password_test.getText().toString();
-        if((!ema.equals(""))&& (!passw.equals("")) && (connect.output != null))
-        {
-            attemptLogin();
+        int count = 0;
 
-            int count = 0;
+        while (true) {
 
-            while(connect.user.getLoggedIn() == false)
-            {
-                count++;
-                if(count > 50000000)
-                {
-                    Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show();
-                    return;
-                }
+            count++;
+
+            if (count > 10) {
+                Toast.makeText(this, "Server took too long to respond", Toast.LENGTH_LONG).show();
+                connect.status = 1;
+                return;
             }
 
-            openDashboard();
-        }
-        else if(connect.output == null)
-        {
-            Toast.makeText(this, "Server is not currently available", Toast.LENGTH_LONG).show();
-        }
+            if (connect.status == 1) {
+                email_test = (EditText) findViewById(R.id.OSL_email_edittext);
+                password_test = (EditText) findViewById(R.id.OSL_password_edittext);
+                String ema = email_test.getText().toString();
+                String passw = password_test.getText().toString();
+                if ((!ema.equals("")) && (!passw.equals(""))) {
 
+                    attemptLogin();
+                    connect.status = 0;
+                }
 
+            }
+
+            if (connect.user.getLoggedIn() == true) {
+                connect.status = 1;
+                openDashboard();
+                return;
+            }
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void openDashboard()
@@ -91,6 +103,5 @@ public class OpeningScreenLogin extends AppCompatActivity {
         i.putExtra("Connection",connect);
         startActivity(i);
     }
-
 
 }
