@@ -53,6 +53,21 @@ public class Server extends Thread{
                     Info temp = new Info();
                     temp.setTag(1);
                     output.writeObject(temp);
+                    break;
+                }
+            }
+
+            System.out.println("Moving to Listen Loop");
+
+            while(true)
+            {
+                Info temp = (Info) input.readObject();
+                if(temp.tag == 0)
+                {
+                    output.writeBoolean(true);
+                    Thread.sleep(2000);
+                    client.close();
+                    break;
                 }
             }
 
@@ -61,6 +76,7 @@ public class Server extends Thread{
 
             try {
                 serverSocket.close();
+                client.close();
                 status = 0;
                 System.out.println("Status Changed");
                 e.printStackTrace();
@@ -68,7 +84,7 @@ public class Server extends Thread{
                 e1.printStackTrace();
             }
 
-        }catch(Exception e)
+        }catch (Exception e)
         {
             status = 0;
             System.out.println("Status Changed");

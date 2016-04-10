@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import layout.EditPersonalDetails;
 import layout.SendAnnouncement;
@@ -75,14 +76,14 @@ public class Dashboard extends Activity{
     public void toViewUniversityDetails(View v)
     {
             Intent i = new Intent(this, ViewUniversityDetails.class);
-            i.putExtra("Connection",connect);
+            i.putExtra("Connection", connect);
             startActivity(i);
     }
 
     public void toListOfSubjects(View v)
     {
             Intent i = new Intent(this, ListOfSubjects.class);
-            i.putExtra("Connection",connect);
+            i.putExtra("Connection", connect);
             startActivity(i);
     }
 
@@ -95,6 +96,20 @@ public class Dashboard extends Activity{
         TextView txt1 = new TextView(this);
         txt1.setText("NEW ANNOUNCEMENT");
         linearLayout.addView(txt1);
+    }
+
+    public void LogOut(View V)
+    {
+        boolean result = connect.send_logout();
+        if(result == true)
+        {
+            Toast.makeText(this, "Successfully Logged Out", Toast.LENGTH_LONG).show();
+            connect = null;
+        }
+        else
+        {
+            Toast.makeText(this, "Failed to Log Out", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

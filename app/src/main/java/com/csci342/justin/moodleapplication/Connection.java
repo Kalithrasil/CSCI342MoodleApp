@@ -14,7 +14,7 @@ public class Connection extends Thread implements Serializable {
 
     MySocket with_server;
     public static final int PORT = 33333;
-    public static final String addr = "192.168.1.55";
+    public static final String addr = "192.168.1.134";
     public Protocol user = new Protocol();
     MyObjectOutputStream output;
     MyObjectInputStream input;
@@ -38,12 +38,17 @@ public class Connection extends Thread implements Serializable {
                     if(temp.tag == 1)
                     {
                         user.setLoggedIn(true);
+                        break;
                     }
 
                 }catch(Exception e)
                 {
                     e.printStackTrace();
                 }
+            }
+            while(true)
+            {
+
             }
 
         }catch(UnknownHostException e)
@@ -64,12 +69,36 @@ public class Connection extends Thread implements Serializable {
         }
     }
 
+    public boolean send_logout()
+    {
+        try {
+            temp = new Info();
+            temp.setTag(0);
+            output.writeObject(temp);
+            boolean result = input.readBoolean();
+            if(result == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }catch(IOException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void request_upload()
     {
         try {
             temp = new Info();
             temp.setTag(2);
             output.writeObject(temp);
+
         }catch(IOException e)
         {
             e.printStackTrace();
