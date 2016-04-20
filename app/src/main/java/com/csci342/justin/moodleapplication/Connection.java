@@ -1,8 +1,11 @@
 package com.csci342.justin.moodleapplication;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
@@ -12,23 +15,35 @@ public class Connection extends Thread implements Serializable {
 
     static final long serialVersionUID = 32L;
 
-    MySocket with_server;
+    Socket with_server;
     public static final int PORT = 33333;
-    public static final String addr = "192.168.1.134";
+    public static final String addr = "172.18.24.119";
     public Protocol user = new Protocol();
-    MyObjectOutputStream output;
-    MyObjectInputStream input;
+    ObjectOutputStream output;
+    ObjectInputStream input;
     Info temp;
     int status = 0;
+
+    public Connection()
+    {
+
+    }
 
     public void run()
     {
 
         try {
-            with_server = new MySocket(InetAddress.getByName(addr), PORT);
-            output = new MyObjectOutputStream(with_server.getOutputStream());
-            input = new MyObjectInputStream(with_server.getInputStream());
-            status = 1;
+            with_server = new Socket(InetAddress.getByName(addr), PORT);
+            input = new ObjectInputStream(with_server.getInputStream());
+            output = new ObjectOutputStream(with_server.getOutputStream());
+
+
+
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
             //connection made and logic waiting
 
             while(true)
@@ -50,13 +65,6 @@ public class Connection extends Thread implements Serializable {
             {
 
             }
-
-        }catch(UnknownHostException e)
-        {
-            e.printStackTrace();
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void send_login()
@@ -69,22 +77,22 @@ public class Connection extends Thread implements Serializable {
         }
     }
 
-    public boolean send_logout()
-    {
+    public boolean send_logout(MyObjectInputStream in, MyObjectOutputStream out) {
         try {
             temp = new Info();
             temp.setTag(0);
-            output.writeObject(temp);
-            boolean result = input.readBoolean();
-            if(result == true)
-            {
+            out.writeObject(temp);
+            boolean result = (boolean) in.readObject();
+            if (result == true) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
 
+        }catch(ClassNotFoundException e)
+        {
+            e.printStackTrace();
+            return false;
         }catch(IOException e)
         {
             e.printStackTrace();

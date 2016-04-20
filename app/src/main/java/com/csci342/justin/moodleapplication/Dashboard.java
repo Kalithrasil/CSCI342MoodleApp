@@ -22,6 +22,8 @@ public class Dashboard extends Activity{
     Intent previous;
     String authority;
     Connection connect;
+    MyObjectOutputStream output;
+    MyObjectInputStream input;
 
     FragmentManager fm = getFragmentManager();
     Fragment frag;
@@ -100,7 +102,9 @@ public class Dashboard extends Activity{
 
     public void LogOut(View V)
     {
-        boolean result = connect.send_logout();
+        output = connect.output;
+        input = connect.input;
+        boolean result = connect.send_logout(input, output);
         if(result == true)
         {
             Toast.makeText(this, "Successfully Logged Out", Toast.LENGTH_LONG).show();
