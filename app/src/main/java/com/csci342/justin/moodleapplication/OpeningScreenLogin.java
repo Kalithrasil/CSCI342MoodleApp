@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -26,12 +27,12 @@ public class OpeningScreenLogin extends AppCompatActivity{
     EditText password_test;
 
     Handler myHandler;
-    int login_token;
+    public static int login_token = 0;
 
     Protocol user;
 
     public static final int PORT = 33333;
-    public static final String addr = "172.18.22.254";
+    public static final String addr = "192.168.1.134";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +57,19 @@ public class OpeningScreenLogin extends AppCompatActivity{
             @Override
             public void handleMessage(Message msg)
             {
+                Log.i("CAUGHT", "Message caught by handler");
+
                 if(msg.what == 1)
                 {
+                    Log.i("GOOD", "SETTING LOGIN TOKEN");
                     login_token = msg.arg1;
-                    connectSucceeded();
+                    successFunction();
                 }
                 else
                 {
-                    connectFailed();
+                    Log.i("BAD", "DENYING LOGIN TOKEN");
+                    login_token = 0;
+                    failureFunction();
                 }
 
             }
@@ -71,14 +77,15 @@ public class OpeningScreenLogin extends AppCompatActivity{
 
     }
 
-    public void connectSucceeded()
+    public void failureFunction()
     {
-        openDashboard();
+        Toast.makeText(this, "Login Failed, please try again", Toast.LENGTH_SHORT).show();
     }
 
-    public void connectFailed()
+    public void successFunction()
     {
-        Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show();
+        Log.i("CONTINUE", "Opening Dashboard activity");
+        openDashboard();
     }
 
     private class logMeIn extends Thread
@@ -101,24 +108,34 @@ public class OpeningScreenLogin extends AppCompatActivity{
 
                 output.writeObject(the_user);
 
-                boolean success = input.readBoolean();
-                if(success) {
+                Log.i("WAITING", "Waiting for Server Reply");
+
+                Info temp = (Info) input.readObject();
+
+                Log.i("RECEIVED", "Server Reply Received");
+
+                if(temp.tag == 1) {
                     Message msg = myHandler.obtainMessage();
                     msg.what = 1;
-                    msg.arg1 = 0;
+                    msg.arg1 = 1;
                     myHandler.sendMessage(msg);
+                    Log.i("SUCCESS", "Message sent confirming login");
                 }
                 else
                 {
                     Message msg = myHandler.obtainMessage();
                     msg.what = 0;
                     myHandler.sendMessage(msg);
+                    Log.i("FAILURE", "Message sent denying login");
                 }
 
             }catch(UnknownHostException e)
             {
                 e.printStackTrace();
             }catch(IOException e)
+            {
+                e.printStackTrace();
+            }catch(ClassNotFoundException e)
             {
                 e.printStackTrace();
             }
@@ -150,8 +167,7 @@ public class OpeningScreenLogin extends AppCompatActivity{
     {
         Intent i = new Intent(this, Dashboard.class);
         String x = ((Spinner)findViewById(R.id.OSL_tempspin_spinner)).getSelectedItem().toString();
-        connect.user.setAuthority(x);
-        i.putExtra("Connection",connect);
+        i.putExtra("Authority",x);
         startActivity(i);
     }
 
