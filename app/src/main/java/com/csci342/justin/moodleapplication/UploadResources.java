@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,8 @@ public class UploadResources extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -71,7 +74,7 @@ public class UploadResources extends Fragment {
                              Bundle savedInstanceState)
     {
         rootView = inflater.inflate(R.layout.fragment_upload_resources, container, false);
-
+        /*
         final ListView listview = (ListView) rootView.findViewById(R.id.UR_list_listview);
 
         String[] values = new String[] {"SUBJECT OUTLINE", "Lecture 01", "Lecture 02", "Lecture 03", "Tutorial 01", "Tutorial 02", "Tutorial 03", "Assignment 1"};
@@ -83,6 +86,7 @@ public class UploadResources extends Fragment {
 
         final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
+        */
 
         return rootView;
         // Inflate the layout for this fragment
@@ -126,5 +130,17 @@ public class UploadResources extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void UploadNewResource(View v)
+    {
+        DBHandler_Resources db = new DBHandler_Resources(getActivity());
+
+        String name = ((TextView)v.findViewById(R.id.textView)).getText().toString();
+
+        Bundle args = getArguments();
+        String subject = args.getString("subject");
+
+        db.addResource(name, subject);
     }
 }

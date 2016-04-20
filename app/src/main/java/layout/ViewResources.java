@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.csci342.justin.moodleapplication.DBHandler_Resources;
 import com.csci342.justin.moodleapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -73,7 +75,7 @@ public class ViewResources extends Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_view_resources, container, false);
-
+        /*
         final ListView listview = (ListView) rootView.findViewById(R.id.VR_infolist_listview);
 
         String[] values = new String[] {"SUBJECT OUTLINE", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - "};
@@ -85,6 +87,9 @@ public class ViewResources extends Fragment {
 
         final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
+        */
+
+        GetFromDatabase();
 
         return rootView;
         // Inflate the layout for this fragment
@@ -128,5 +133,21 @@ public class ViewResources extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void GetFromDatabase()
+    {
+        DBHandler_Resources db = new DBHandler_Resources(getActivity());
+
+        Bundle args = getArguments();
+        String subject = args.getString("subject");
+
+        ListView lv = (ListView) rootView.findViewById(R.id.VR_infolist_listview);
+        List<String> myList = db.getAllResources(subject);
+
+        ArrayAdapter<String> myarrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, myList);
+        lv.setAdapter(myarrayAdapter);
+        lv.setTextFilterEnabled(true);
+
     }
 }
