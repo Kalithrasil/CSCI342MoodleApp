@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import layout.EditPersonalDetails;
 import layout.SendAnnouncement;
@@ -22,8 +24,8 @@ public class Dashboard extends Activity{
     Intent previous;
     String authority;
     Connection connect;
-    MyObjectOutputStream output;
-    MyObjectInputStream input;
+    ObjectOutputStream output;
+    ObjectInputStream input;
 
     FragmentManager fm = getFragmentManager();
     Fragment frag;
@@ -98,22 +100,6 @@ public class Dashboard extends Activity{
         TextView txt1 = new TextView(this);
         txt1.setText("NEW ANNOUNCEMENT");
         linearLayout.addView(txt1);
-    }
-
-    public void LogOut(View V)
-    {
-        output = connect.output;
-        input = connect.input;
-        boolean result = connect.send_logout(input, output);
-        if(result == true)
-        {
-            Toast.makeText(this, "Successfully Logged Out", Toast.LENGTH_LONG).show();
-            connect = null;
-        }
-        else
-        {
-            Toast.makeText(this, "Failed to Log Out", Toast.LENGTH_LONG).show();
-        }
     }
 
 }

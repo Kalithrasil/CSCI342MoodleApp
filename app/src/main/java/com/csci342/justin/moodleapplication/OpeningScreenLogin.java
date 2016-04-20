@@ -31,7 +31,7 @@ public class OpeningScreenLogin extends AppCompatActivity{
     Protocol user;
 
     public static final int PORT = 33333;
-    public static final String addr = "172.18.24.119";
+    public static final String addr = "172.18.22.254";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +56,29 @@ public class OpeningScreenLogin extends AppCompatActivity{
             @Override
             public void handleMessage(Message msg)
             {
-                login_token = msg.arg1;
+                if(msg.what == 1)
+                {
+                    login_token = msg.arg1;
+                    connectSucceeded();
+                }
+                else
+                {
+                    connectFailed();
+                }
+
             }
         };
 
+    }
+
+    public void connectSucceeded()
+    {
+        openDashboard();
+    }
+
+    public void connectFailed()
+    {
+        Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show();
     }
 
     private class logMeIn extends Thread
@@ -80,14 +99,21 @@ public class OpeningScreenLogin extends AppCompatActivity{
                 ObjectInputStream input = new ObjectInputStream(with_server.getInputStream());
                 ObjectOutputStream output = new ObjectOutputStream(with_server.getOutputStream());
 
-                EditText email_test = (EditText) findViewById(R.id.OSL_email_edittext);
-                EditText password_test = (EditText) findViewById(R.id.OSL_password_edittext);
-                String ema = email_test.getText().toString();
-                String passw = password_test.getText().toString();
-                the_user.generateHash(passw);
-                the_user.setLogin(ema);
+                output.writeObject(the_user);
 
-                
+                boolean success = input.readBoolean();
+                if(success) {
+                    Message msg = myHandler.obtainMessage();
+                    msg.what = 1;
+                    msg.arg1 = 0;
+                    myHandler.sendMessage(msg);
+                }
+                else
+                {
+                    Message msg = myHandler.obtainMessage();
+                    msg.what = 0;
+                    myHandler.sendMessage(msg);
+                }
 
             }catch(UnknownHostException e)
             {
@@ -97,65 +123,27 @@ public class OpeningScreenLogin extends AppCompatActivity{
                 e.printStackTrace();
             }
 
-            Message msg = myHandler.obtainMessage();
-            msg.arg1 = 0;
-            myHandler.sendMessage(msg);
         }
     }
 
     public void startLoginProcess()
     {
+            EditText email_test = (EditText) findViewById(R.id.OSL_email_edittext);
+            EditText password_test = (EditText) findViewById(R.id.OSL_password_edittext);
+            String ema = email_test.getText().toString();
+            String passw = password_test.getText().toString();
+            user.generateHash(passw);
+            user.setLogin(ema);
             logMeIn temp = new logMeIn(user);
             temp.start();
-    }
-
-    public void attemptLogin()
-    {
-        EditText email_test = (EditText) findViewById(R.id.OSL_email_edittext);
-        EditText password_test = (EditText) findViewById(R.id.OSL_password_edittext);
-        String ema = email_test.getText().toString();
-        String passw = password_test.getText().toString();
-        connect.user.generateHash(passw);
-        connect.user.setLogin(ema);
-        connect.send_login();
     }
 
     public void login(View v) {
         Toast.makeText(this, "Attempting to connect", Toast.LENGTH_LONG).show();
 
-        EditText email_test = (EditText) findViewById(R.id.OSL_email_edittext);
-        EditText password_test = (EditText) findViewById(R.id.OSL_password_edittext);
-        String ema = email_test.getText().toString();
-        String passw = password_test.getText().toString();
-        connect.user.generateHash(passw);
-        connect.user.setLogin(ema);
-
         startLoginProcess();
 
-        int count = 0;
 
-        while (true) {
-
-            count++;
-
-            if (count > 10) {
-                Toast.makeText(this, "Server took too long to respond", Toast.LENGTH_LONG).show();
-                connect.status = 1;
-                return;
-            }
-
-            if (connect.user.getLoggedIn() == true) {
-                connect.status = 1;
-                openDashboard();
-                return;
-            }
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public void openDashboard()

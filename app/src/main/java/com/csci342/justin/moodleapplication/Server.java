@@ -23,6 +23,9 @@ public class Server extends Thread{
             serverSocket = new MyServerSocket(33333);
             System.out.println("Server Setup, waiting...");
             client = serverSocket.accept();
+
+            System.out.println("Client connected to Socket");
+
             output = new ObjectOutputStream(client.getOutputStream());
             input = new ObjectInputStream(client.getInputStream());
 
@@ -33,6 +36,9 @@ public class Server extends Thread{
 
             System.out.println("Client: " + login_attempt.getLogin());
             System.out.println("   using password hash: " + login_attempt.getPass());
+
+            boolean result = true;
+            output.writeBoolean(result);
 
         }catch(IOException e)
         {

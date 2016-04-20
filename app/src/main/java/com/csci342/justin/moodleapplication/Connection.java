@@ -17,7 +17,7 @@ public class Connection extends Thread implements Serializable {
 
     Socket with_server;
     public static final int PORT = 33333;
-    public static final String addr = "172.18.24.119";
+    public static final String addr = "172.18.22.254";
     public Protocol user = new Protocol();
     ObjectOutputStream output;
     ObjectInputStream input;
