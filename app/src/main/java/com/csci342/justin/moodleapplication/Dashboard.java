@@ -23,7 +23,6 @@ public class Dashboard extends Activity{
 
     Intent previous;
     String authority;
-    Connection connect;
     ObjectOutputStream output;
     ObjectInputStream input;
 
@@ -37,7 +36,7 @@ public class Dashboard extends Activity{
         setContentView(R.layout.activity_dashboard);
 
         previous = getIntent();
-        connect = (Connection) previous.getSerializableExtra("Connection");
+        authority = previous.getStringExtra("Authority");
 
         frag = new EditPersonalDetails();
         FragmentTransaction ft = fm.beginTransaction();
@@ -46,7 +45,7 @@ public class Dashboard extends Activity{
         tabs.removeAllViews();
         ft.replace(R.id.D_tabview_framelayout, frag).commit();
 
-        if(connect.user.authority.equals("Teacher"))
+        if(authority.equals("Teacher"))
         {
             Button temp = (Button) findViewById(R.id.D_SenAnn_button);
             temp.setVisibility(View.VISIBLE);
@@ -80,14 +79,12 @@ public class Dashboard extends Activity{
     public void toViewUniversityDetails(View v)
     {
             Intent i = new Intent(this, ViewUniversityDetails.class);
-            i.putExtra("Connection", connect);
             startActivity(i);
     }
 
     public void toListOfSubjects(View v)
     {
             Intent i = new Intent(this, ListOfSubjects.class);
-            i.putExtra("Connection", connect);
             startActivity(i);
     }
 

@@ -32,13 +32,20 @@ public class Server extends Thread{
             System.out.println("Client Connected: Waiting for Login");
 
             Protocol login_attempt = (Protocol) input.readObject();
-            System.out.println(login_attempt.getPass());
 
             System.out.println("Client: " + login_attempt.getLogin());
             System.out.println("   using password hash: " + login_attempt.getPass());
 
-            boolean result = true;
-            output.writeBoolean(result);
+            Info temp = new Info();
+            temp.tag = 1;
+            output.writeObject(temp);
+
+            System.out.println("Login Confirmation Sent");
+
+            while(true)
+            {
+
+            }
 
         }catch(IOException e)
         {
