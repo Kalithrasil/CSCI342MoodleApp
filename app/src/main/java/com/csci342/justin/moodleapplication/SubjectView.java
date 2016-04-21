@@ -68,6 +68,12 @@ public class SubjectView extends Activity {
         frag = new ViewResources();
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
+
+
+        Bundle args = new Bundle();
+        args.putString("subject", ( (TextView) findViewById(R.id.SVT_subjectname_textview)).getText().toString() );
+        frag.setArguments(args);
+
         ft.replace(R.id.SV_tabview_framelayout, frag).commit();
     }
 
@@ -76,6 +82,11 @@ public class SubjectView extends Activity {
         frag = new ViewResources();
         FragmentTransaction ft = fm.beginTransaction();
         tabs.removeAllViews();
+
+        Bundle args = new Bundle();
+        args.putString("subject", ( (TextView) findViewById(R.id.SVT_subjectname_textview)).getText().toString() );
+        frag.setArguments(args);
+
         ft.replace(R.id.SVT_tabsview_framelayout, frag).commit();
     }
 

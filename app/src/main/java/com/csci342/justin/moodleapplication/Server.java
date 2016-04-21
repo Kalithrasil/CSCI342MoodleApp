@@ -1,95 +1,59 @@
 package com.csci342.justin.moodleapplication;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Created by Justin on 2016-03-30.
  */
 public class Server extends Thread{
 
-    static MyServerSocket serverSocket;
-    static MyObjectOutputStream output;
-    static MyObjectInputStream input;
-    static MySocket client;
+    static ServerSocket serverSocket;
+    static ObjectOutputStream output;
+    static ObjectInputStream input;
+    static Socket client;
     static int status = 0;
 
     public static void main(String[] args) {
-        Server server = new Server();
-        server.start();
-        status = 1;
 
-        while(true)
-        {
-            if(status == 0)
-            {
-                server = new Server();
-                server.start();
-                status = 1;
-                System.out.println("Server restarted");
-            }
-        }
-
-    }
-
-    public void run()
-    {
         try {
             serverSocket = new MyServerSocket(33333);
             System.out.println("Server Setup, waiting...");
             client = serverSocket.accept();
-            input = new MyObjectInputStream(client.getInputStream());
-            output = new MyObjectOutputStream(client.getOutputStream());
 
-            System.out.println("Server Setup, waiting...");
+            System.out.println("Client connected to Socket");
 
-            while(true) {
-                System.out.println("Waiting for object");
-                Protocol login_attempt = (Protocol) input.readObject();
-                System.out.println("Received object");
-                System.out.println(login_attempt.getPass());
+            output = new ObjectOutputStream(client.getOutputStream());
+            input = new ObjectInputStream(client.getInputStream());
 
-                if(true)
-                {
-                    Info temp = new Info();
-                    temp.setTag(1);
-                    output.writeObject(temp);
-                    break;
-                }
-            }
+            System.out.println("Client Connected: Waiting for Login");
 
-            System.out.println("Moving to Listen Loop");
+            Protocol login_attempt = (Protocol) input.readObject();
+
+            System.out.println("Client: " + login_attempt.getLogin());
+            System.out.println("   using password hash: " + login_attempt.getPass());
+
+            Info temp = new Info();
+            temp.tag = 1;
+            output.writeObject(temp);
+
+            System.out.println("Login Confirmation Sent");
 
             while(true)
             {
-                Info temp = (Info) input.readObject();
-                if(temp.tag == 0)
-                {
-                    output.writeBoolean(true);
-                    Thread.sleep(2000);
-                    client.close();
-                    break;
-                }
+
             }
 
         }catch(IOException e)
         {
-
-            try {
-                serverSocket.close();
-                client.close();
-                status = 0;
-                System.out.println("Status Changed");
-                e.printStackTrace();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        }catch (Exception e)
-        {
-            status = 0;
-            System.out.println("Status Changed");
             e.printStackTrace();
-
+        }catch(ClassNotFoundException e)
+        {
+            e.printStackTrace();
         }
     }
+
 }

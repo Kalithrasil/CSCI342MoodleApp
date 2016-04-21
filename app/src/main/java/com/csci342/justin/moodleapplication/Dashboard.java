@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import layout.EditPersonalDetails;
 import layout.SendAnnouncement;
@@ -21,7 +23,8 @@ public class Dashboard extends Activity{
 
     Intent previous;
     String authority;
-    Connection connect;
+    ObjectOutputStream output;
+    ObjectInputStream input;
 
     FragmentManager fm = getFragmentManager();
     Fragment frag;
@@ -33,7 +36,7 @@ public class Dashboard extends Activity{
         setContentView(R.layout.activity_dashboard);
 
         previous = getIntent();
-        connect = (Connection) previous.getSerializableExtra("Connection");
+        authority = previous.getStringExtra("Authority");
 
         frag = new EditPersonalDetails();
         FragmentTransaction ft = fm.beginTransaction();
@@ -42,7 +45,7 @@ public class Dashboard extends Activity{
         tabs.removeAllViews();
         ft.replace(R.id.D_tabview_framelayout, frag).commit();
 
-        if(connect.user.authority.equals("Teacher"))
+        if(authority.equals("Teacher"))
         {
             Button temp = (Button) findViewById(R.id.D_SenAnn_button);
             temp.setVisibility(View.VISIBLE);
@@ -76,14 +79,12 @@ public class Dashboard extends Activity{
     public void toViewUniversityDetails(View v)
     {
             Intent i = new Intent(this, ViewUniversityDetails.class);
-            i.putExtra("Connection", connect);
             startActivity(i);
     }
 
     public void toListOfSubjects(View v)
     {
             Intent i = new Intent(this, ListOfSubjects.class);
-            i.putExtra("Connection", connect);
             startActivity(i);
     }
 
@@ -96,20 +97,6 @@ public class Dashboard extends Activity{
         TextView txt1 = new TextView(this);
         txt1.setText("NEW ANNOUNCEMENT");
         linearLayout.addView(txt1);
-    }
-
-    public void LogOut(View V)
-    {
-        boolean result = connect.send_logout();
-        if(result == true)
-        {
-            Toast.makeText(this, "Successfully Logged Out", Toast.LENGTH_LONG).show();
-            connect = null;
-        }
-        else
-        {
-            Toast.makeText(this, "Failed to Log Out", Toast.LENGTH_LONG).show();
-        }
     }
 
 }
