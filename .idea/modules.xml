@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
+<<<<<<< HEAD
     <modules />
+=======
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/csci342.iml" filepath="$PROJECT_DIR$/csci342.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/csci342tool.iml" filepath="$PROJECT_DIR$/csci342tool.iml" />
+>>>>>>> 049d66f553e3262617f67221407f53e355c323ee
+    </modules>
+>>>>>>> 2445e5309bdb2f88378dc34b14a7d6618a988143
   </component>
 </project>
