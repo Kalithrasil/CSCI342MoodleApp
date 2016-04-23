@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CSCI342MoodleApp.iml" filepath="$PROJECT_DIR$/CSCI342MoodleApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/csci342tool.iml" filepath="$PROJECT_DIR$/csci342tool.iml" />
+=======
+>>>>>>> parent of 8d9eb16... fixing merge
     </modules>
   </component>
 </project>
