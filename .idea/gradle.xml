@@ -3,8 +3,9 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
 <<<<<<< HEAD
         <option name="gradleHome" value="E:\android_local\gradle\gradle-2.8" />
         <option name="gradleJvm" value="1.8" />
@@ -12,6 +13,9 @@
         <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.8" />
         <option name="gradleJvm" value="1.7" />
 >>>>>>> parent of 8d9eb16... fixing merge
+=======
+        <option name="gradleJvm" value="1.7" />
+>>>>>>> 86a01f55270c47f95b34aee24f01d292cdd2417f
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
